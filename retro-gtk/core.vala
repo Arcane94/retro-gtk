@@ -265,12 +265,11 @@ public class Core : Object {
     }
 
 	public bool has_variable_value(string key, string val) {
-		message("yolo swag %d",1);
 		if (!variables_interface.contains(key)) {
 			return false;
 		}
 
-		string[] possible_values = variables_interface.lookup_values(val);
+		string[] possible_values = variables_interface.lookup_values(key);
 
 		foreach (string element in possible_values) {
 			if (element == val) return true;
