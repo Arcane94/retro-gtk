@@ -4,7 +4,7 @@ public class Retro.CoreView : Gtk.EventBox {
 	private Core core;
 	private CairoDisplay display;
 	private InputDeviceManager input;
-	private Mouse mouse;
+	private Pointer pointer;
 
 	construct {
 		can_focus = true;
@@ -15,10 +15,9 @@ public class Retro.CoreView : Gtk.EventBox {
 		add (display);
 
 		input = new InputDeviceManager ();
-		mouse = new Mouse (this);
+		pointer = new Pointer (this);
 
-		input.set_keyboard (this);
-		input.set_controller_device (0, mouse);
+		input.set_controller_device (0, pointer);
 	}
 
 	public void set_core (Core? core) {
@@ -35,3 +34,4 @@ public class Retro.CoreView : Gtk.EventBox {
 		}
 	}
 }
+

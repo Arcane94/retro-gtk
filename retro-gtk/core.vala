@@ -159,7 +159,7 @@ public class Core : Object {
 	public signal bool message (string message, uint frames);
 
 	internal Module module;
-	internal Variables variables_interface;
+	internal Options variables_interface;
 
 	internal void *environment_internal;
 
@@ -253,6 +253,29 @@ public class Core : Object {
 	private extern bool on_key_event (Gdk.EventKey event);
 
 	private extern void set_system_av_info (SystemAvInfo system_av_info);
+
+	public string get_variables_interface (string core_variable) {
+
+		return variables_interface.get_variable(core_variable);
+	}
+
+	public void set_variables_interface (string key, string val) {
+
+		variables_interface.set_option(key, val);
+    }
+
+	public bool is_valid(string key, string val) {
+		if (variables_interface.contains(key)) {
+			string[] possible_values = variables_interface.lookup_values(val);
+
+			foreach (string element in possible_values) {
+				if (element == val) return true;
+			}
+		}
+
+		return false;
+	}
+
 }
 
 }
