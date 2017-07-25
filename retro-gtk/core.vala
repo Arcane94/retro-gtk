@@ -268,8 +268,9 @@ public class Core : Object {
 		if (!variables_interface.contains(key)) {
 			return false;
 		}
-		stdout.printf("Yolo Swag");
+		message("Yolo Swag %d",1);
 		string[] possible_values = variables_interface.lookup_values(val);
+		message("Yolo Swag %d",2);
 		stdout.printf("values %s %s",possible_values[0],possible_values[1]);
 
 		foreach (string element in possible_values) {
