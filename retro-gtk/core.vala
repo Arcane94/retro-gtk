@@ -265,7 +265,7 @@ public class Core : Object {
     }
 
 	public bool has_variable_value(string key, string val) {
-		message("%s","yolo swag");
+		message("yolo swag %d",1);
 		if (!variables_interface.contains(key)) {
 			return false;
 		}
