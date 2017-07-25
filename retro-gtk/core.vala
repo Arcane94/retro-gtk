@@ -264,13 +264,15 @@ public class Core : Object {
 		variables_interface.set_option(key, val);
     }
 
-	public bool is_valid(string key, string val) {
-		if (variables_interface.contains(key)) {
-			string[] possible_values = variables_interface.lookup_values(val);
+	public bool has_variable_value(string key, string val) {
+		if (!variables_interface.contains(key)) {
+			return false;
+		}
 
-			foreach (string element in possible_values) {
-				if (element == val) return true;
-			}
+		string[] possible_values = variables_interface.lookup_values(val);
+
+		foreach (string element in possible_values) {
+			if (element == val) return true;
 		}
 
 		return false;
